@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-2.0.3.js"></script>
+<script src="jquery-2.0.3.min.js"></script> 
+<script>
+	$(document).ready(function(){
+			$("#btn1").click(function(){
+				alert("hh"+new Date().getTime());
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/Hello/jsontest?t="+new Date().getTime(),//URL自己设定
+			data:{"question":"how are you"},
+			dataType:"json",
+			cache:false,
+			success:function(data){
+				alert("user: "+data["user"]["username"]);
+			},
+			error:function(xhr){
+				alert("error: "+xhr.responseText);
+			}
+		})
+	})
+	})
+
+	
+	</script>
+</head>
+
+<body>
+<input type="button" id="btn1" value="点击我发送ajax并响应">
+</body>
+</html>
