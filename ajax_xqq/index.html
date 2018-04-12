@@ -7,8 +7,8 @@
 <script src="jquery-2.0.3.min.js"></script> 
 <script>
 	$(document).ready(function(){
-			$("#btn1").click(function(){
-				alert("hh"+new Date().getTime());
+		$("#btn1").click(function(){
+			alert("hh"+new Date().getTime());
 		$.ajax({
 			type:"GET",
 			url:"http://localhost:8080/Hello/jsontest?t="+new Date().getTime(),//URL自己设定
@@ -24,8 +24,6 @@
 		})
 	})
 	})
-
-	
 	</script>
 </head>
 
