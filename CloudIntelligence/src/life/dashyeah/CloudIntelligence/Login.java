@@ -7,7 +7,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 //import java.sql.Connection;
 
-//import life.dashyeah.CloudIntelligence.Data.DBConn;
 import life.dashyeah.CloudIntelligence.Data.User;
 
 public class Login extends ActionSupport implements ModelDriven<User>{

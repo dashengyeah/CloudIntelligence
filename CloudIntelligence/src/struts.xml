@@ -15,7 +15,25 @@
             </result>
         </action>
         
-        <action name="managecourse" method="manageCourse" class="life.dashyeah.CloudIntelligence.CourseMgmt">
+        <action name="managecourse" method="manage" class="life.dashyeah.CloudIntelligence.CourseMgr">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="managechapterandutil" method="manage" class="life.dashyeah.CloudIntelligence.ChapterAndUtilMgr">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="manageorganization" method="manage" class="life.dashyeah.CloudIntelligence.OrganizationMgr">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="managetraining" method="manage" class="life.dashyeah.CloudIntelligence.TrainingMgr">
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
