@@ -1,11 +1,15 @@
 package life.dashyeah.CloudIntelligence;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -81,12 +85,20 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 			dataMap.put("status", "OK");
 			break;
 		case "add":
+			if(!saveFile()) {
+				dataMap.put("status", "ERROR");
+				dataMap.put("info", "File Upload ERROR.");
+				return SUCCESS;
+			}
+			
 			orgs.clear();
-			sql = "insert into schorcom(comName, type, comBackground, comIntroduce) ";
+			sql = "insert into schorcom(comName, type, comBackground, comLogo, comPic, comIntroduce) ";
 			sql += "values('"+
 			       opt.getName()+"', '"+
 				   opt.getType()+"', '"+
-			       opt.getBackground()+"', '"+
+				   opt.getBackgroundFileName()+"', '"+
+				   opt.getLogoFileName()+"', '"+
+				   opt.getPicFileName()+"', '"+
 				   opt.getIntroduction()+"');";
 			System.out.println("[MSG] sql: "+sql);
 			try {
@@ -112,7 +124,7 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ps.executeUpdate();
 				ps.close();
-				orgs.put("name", opt.getName());
+				orgs.put("id", opt.getId());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -129,6 +141,38 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 		}
 		
 		return SUCCESS;
+	}
+	
+	private boolean saveFile() {
+		/* Copy file to a safe location */
+		String destPath = "D:\\Java\\apache-tomcat-8.5.29\\work";
+		
+		try {
+			System.out.println("Src File name: " + opt.getLogo());
+			System.out.println("Src File name: " + opt.getBackground());
+			System.out.println("Src File name: " + opt.getPic());
+			
+			System.out.println("dst File name: " + opt.getLogoFileName());
+			System.out.println("dst File name: " + opt.getBackgroundFileName());
+			System.out.println("dst File name: " + opt.getPicFileName());
+
+			System.out.println("myFileContentType: " + opt.getLogoContentType());
+			System.out.println("myFileContentType: " + opt.getBackgroundContentType());
+			System.out.println("myFileContentType: " + opt.getPicContentType());
+
+			File destFile = new File(destPath, opt.getLogoFileName());
+			FileUtils.copyFile(opt.getLogo(), destFile);
+			File destFile1 = new File(destPath, opt.getBackgroundFileName());
+			FileUtils.copyFile(opt.getBackground(), destFile1);
+			File destFile11 = new File(destPath, opt.getPicFileName());
+			FileUtils.copyFile(opt.getPic(), destFile11);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public Map<String, Object> getDataMap() {

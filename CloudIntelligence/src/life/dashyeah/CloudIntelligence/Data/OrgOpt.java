@@ -1,5 +1,7 @@
 package life.dashyeah.CloudIntelligence.Data;
 
+import java.io.File;
+
 public class OrgOpt {
 	/**
 	 * option
@@ -9,10 +11,19 @@ public class OrgOpt {
 	private String id;
 	private String name;
 	private String type;
-	private String background;
-	private String logo;
-	private String pic;
 	private String introduction;
+	
+	private File background;
+	private String backgroundFileName;
+	private String backgroundContentType;
+	
+	private File logo;
+	private String logoFileName;
+	private String logoContentType;
+	
+	private File pic;
+	private String picFileName;
+	private String picContentType;
 	
 	/**
 	 * Available options
@@ -43,24 +54,6 @@ public class OrgOpt {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getBackground() {
-		return background;
-	}
-	public void setBackground(String background) {
-		this.background = background;
-	}
-	public String getLogo() {
-		return logo;
-	}
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-	public String getPic() {
-		return pic;
-	}
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -73,4 +66,77 @@ public class OrgOpt {
 	public void setOpt(String opt) {
 		this.opt = opt;
 	}
+
+	public File getBackground() {
+		return background;
+	}
+
+	public void setBackground(File background) {
+		this.background = background;
+	}
+
+	public String getBackgroundFileName() {
+		return backgroundFileName;
+	}
+
+	public void setBackgroundFileName(String backgroundFileName) {
+		this.backgroundFileName = backgroundFileName;
+	}
+
+	public String getBackgroundContentType() {
+		return backgroundContentType;
+	}
+
+	public void setBackgroundContentType(String backgroundContentType) {
+		this.backgroundContentType = backgroundContentType;
+	}
+
+	public File getLogo() {
+		return logo;
+	}
+
+	public void setLogo(File logo) {
+		this.logo = logo;
+	}
+
+	public String getLogoFileName() {
+		return logoFileName;
+	}
+
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
+	}
+
+	public String getLogoContentType() {
+		return logoContentType;
+	}
+
+	public void setLogoContentType(String logoContentType) {
+		this.logoContentType = logoContentType;
+	}
+
+	public File getPic() {
+		return pic;
+	}
+
+	public void setPic(File pic) {
+		this.pic = pic;
+	}
+
+	public String getPicFileName() {
+		return picFileName;
+	}
+
+	public void setPicFileName(String picFileName) {
+		this.picFileName = picFileName;
+	}
+
+	public String getPicContentType() {
+		return picContentType;
+	}
+
+	public void setPicContentType(String picContentType) {
+		this.picContentType = picContentType;
+	}
+	
 }

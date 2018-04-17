@@ -3,12 +3,15 @@ package life.dashyeah.CloudIntelligence;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
 
 import life.dashyeah.CloudIntelligence.Data.CourseOpt;
 
@@ -45,6 +48,7 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 		Map<String, Object> courses = new HashMap<String, Object>();
 		
 		dataMap.clear();
+		System.out.println("[MSG] opt="+opt.getOpt());
 		if(!CourseOpt.checkOpt(opt.getOpt())) {
 			dataMap.put("status", "ERROR");
 			dataMap.put("info", "Bad Option!");
@@ -83,10 +87,18 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 			dataMap.put("status", "OK");
 			break;
 		case "add":
+			if(!saveFile()) {
+				dataMap.put("status", "ERROR");
+				dataMap.put("info", "File Upload ERROR.");
+				return SUCCESS;
+			}
 			courses.clear();
-			sql = "insert into course(courseName, courseIntroduce) values";
+			sql = "insert into course(courseName, courseIntroduce, courseType, coursePostSrc, introduceVideoSrc) values";
 			sql += "( '"+opt.getName()+
 				   "','"+opt.getIntroduction()+
+				   "','"+opt.getType()+
+				   "','"+opt.getPostFileName()+
+				   "','"+opt.getVideoFileName()+
 				   "');";
 			System.out.println("[MSG] sql: "+sql);
 			try {
@@ -129,6 +141,29 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 		}
 		
 		return SUCCESS;
+	}
+
+	private boolean saveFile() {
+		String destPath = "D:\\Java\\apache-tomcat-8.5.29\\work";
+		try {
+			System.out.println("Src File name: " + opt.getPost());
+			System.out.println("Src File name: " + opt.getVideo());
+			
+			System.out.println("dst File name: " + opt.getPostFileName());
+			System.out.println("dst File name: " + opt.getVideoFileName());
+			
+			System.out.println("myFileContentType: " + opt.getPostContentType());
+			System.out.println("myFileContentType: " + opt.getVideoContentType());
+			
+			File destFile = new File(destPath, opt.getPostFileName());
+			FileUtils.copyFile(opt.getPost(), destFile);
+			File destFile1 = new File(destPath, opt.getVideoFileName());
+			FileUtils.copyFile(opt.getVideo(), destFile1);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override

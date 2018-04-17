@@ -10,7 +10,7 @@ $(document).ready(function(){
 			dataType:"json",
 			cache:false,
 			success:function(data){
-				if(data["status"] == "OK") window.location.href="manageCourse.html";
+				if(data["status"] == "OK") window.location.href="index.html";
 				else{
 					alert("登录失败，账号或密码错误！");
 				}

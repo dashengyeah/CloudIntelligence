@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>云智教育平台 -- 管理系统</title>
+
+	<style type="text/css">
+		.all{
+			border:1px solid black;
+		}
+		#top{
+			float:top;
+			height:80px;
+		}
+		#left{
+			float:left;
+			width:20%;
+		}
+		#right{
+			float:right;
+			width:79%;
+		}
+		.menu-item:hover{
+			cursor:pointer;
+			color:blue;
+		}
+		.item-content{
+			display:none;
+			text-align:center;
+		}
+		#course-panel{
+			text-align:center;
+		}
+	</style>
+	<script src="./js/lib/jquery-2.0.3.js"></script>
+	<script src="./js/lib/jquery-2.0.3.min.js"></script> 
+	
+	<script src="./js/index.js" type="text/javascript"></script>
+	<script src="./js/manageorg.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div class="all" id="top" style="text-align:center">
+		<h3>云智教育平台</h3>
+	</div>
+
+	<div class="all" id="left">
+		<h4>目录</h4>
+		<ul id="menu">
+			<li class="menu-item" onclick="course()">课程</li>
+			<li class="menu-item" onclick="org()">组织/机构</li>
+			<li class="menu-item" onclick="training()">实训计划</li>
+		</ul>
+	</div>
+
+	<div class="all" id="right" >
+		<div id="item-course" class="item-content" style="display:block">
+			<h3>课程管理</h3>
+			<div id="course-panel">
+				<form id="course_add_info" action="managecourse?opt=add" method="post" enctype="multipart/form-data">
+					<input type="text" name="name" placeholder="课程名称"/> <br />
+					<textarea name="introduction" placeholder="课程简介"></textarea> <br />
+					
+					<label for="type">课程分类：</label>
+					<select name="type">
+						<option value="null">--未选择--</option>
+						<option value="数学/统计数学">数学/统计数学</option>
+						<option value="数学/数值分析">数学/数值分析</option>
+						<option value="数学/微积分">数学/微积分</option>
+						<option value="数学/组合数学">数学/组合数学</option>
+						<option value="数学/高等数学">数学/高等数学</option>
+					</select> <br />
+			    	<label for="post">封面图片：</label>
+			    	<input type="file" name="post" /> <br />
+			    	<label for="video">简介视频：</label>
+			    	<input type="file" name="video" /> <br />
+					
+					<input type="button" id="btn_course_add" value="新增"/> <br />
+				</form>
+				<form id="course_delete_info">
+					<input type="text" name="id" placeholder="课程id"/>
+					<input type="button" id="btn_course_delete" value="删除"/> <br />
+				</form>
+				<input type="button" id="btn_course_list" value="列表"/> <br />
+			</div>
+			<div id="course_dataview">
+				<table id="courselist">
+					<caption>课程列表</caption>
+					<tr><th>课程ID</th><th>课程名称</th><th>学校</th><th>教师</th></tr>
+				</table>
+			</div>
+		</div>
+		<div id="item-org" class="item-content">
+			<h3>院校/机构管理</h3>
+			<form id="org_add_info" action="manageorganization?opt=add" method="post" enctype="multipart/form-data">
+				<label for="name"></label>
+				<input type="text" name="name" placeholder="机构/组织名称"/> <br />
+				<label for="type">分类：</label>
+				<select name="type">
+					<option value="院校">院校</option>
+					<option value="培训机构">培训机构</option>
+				</select> <br />
+				<label for="introduction"></label>
+				<input type="text" name="introduction" placeholder="简介"/> <br />
+		
+		    	<label for="logo">logo:</label>
+		    	<input type="file" name="logo" /> <br />
+		    	<label for="background">背景图片</label>
+		    	<input type="file" name="background" /> <br />
+		    	<label for="pic">简介照片</label>
+		    	<input type="file" name="pic" /> <br />
+		    	
+				<input type="button" id="btn_org_add" value="新增"/> <br />
+		    </form>
+			<form id="org_delete_info" action="manageorganization?opt=delete">
+				<input type="text" name="id" placeholder="课程id" /> 
+				<input type="button" id="btn_org_delete" value="删除" /> <br />
+			</form>
+			<input type="button"  id="btn_org_list" value="列表" /> <br />
+			<div id="orgdataview">
+				<table id="orglist">
+					<caption>组织/机构列表</caption>
+					<tr><th>组织/机构ID</th><th>名称</th><th>类型</th><th>简介</th></tr>
+				</table>
+			</div>
+		</div>
+		<div id="item-training" class="item-content">
+			<form >
+				<input type="text" name="name" placeholder="实训名称"/>
+				<input type="text" name="course" placeholder="课程id"/> <br />
+				<textarea name="content" placeholder="实训内容"></textarea> <br />
+				
+				<label for="realeasedate">发布日期：</label>
+				<input type="date" name="realeasedate"/> <br />
+				<label for="deadline">截止日期：</label>
+				<input type="date" name="deadline"/> <br />
+				
+				<input type="submit" id="" value="发布"/> <br />
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>
