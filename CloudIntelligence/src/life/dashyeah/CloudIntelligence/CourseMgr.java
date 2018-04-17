@@ -14,6 +14,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 
 import life.dashyeah.CloudIntelligence.Data.CourseOpt;
+import life.dashyeah.CloudIntelligence.Data.FileSavingCfg;
 
 public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 
@@ -48,7 +49,6 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 		Map<String, Object> courses = new HashMap<String, Object>();
 		
 		dataMap.clear();
-		System.out.println("[MSG] opt="+opt.getOpt());
 		if(!CourseOpt.checkOpt(opt.getOpt())) {
 			dataMap.put("status", "ERROR");
 			dataMap.put("info", "Bad Option!");
@@ -59,6 +59,7 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 		case "list":
 			courses.clear();
 			sql = "SELECT * FROM course;";
+			System.out.println("[MSG] sql: "+sql);
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
@@ -144,8 +145,9 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 	}
 
 	private boolean saveFile() {
-		String destPath = "D:\\Java\\apache-tomcat-8.5.29\\work";
+		String destPath = FileSavingCfg.getFileRoot();
 		try {
+			/*
 			System.out.println("Src File name: " + opt.getPost());
 			System.out.println("Src File name: " + opt.getVideo());
 			
@@ -154,7 +156,7 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 			
 			System.out.println("myFileContentType: " + opt.getPostContentType());
 			System.out.println("myFileContentType: " + opt.getVideoContentType());
-			
+			*/
 			File destFile = new File(destPath, opt.getPostFileName());
 			FileUtils.copyFile(opt.getPost(), destFile);
 			File destFile1 = new File(destPath, opt.getVideoFileName());

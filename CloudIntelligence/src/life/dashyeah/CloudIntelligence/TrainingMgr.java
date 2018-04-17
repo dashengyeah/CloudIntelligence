@@ -102,7 +102,7 @@ public class TrainingMgr extends ActionSupport implements ModelDriven<TrainingOp
 			break;
 		case "delete":
 			trainings.clear();
-			sql = "delete from trainings where id="+opt.getId();
+			sql = "delete from training where id="+opt.getId();
 			System.out.println("[MSG] sql: "+sql);
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);

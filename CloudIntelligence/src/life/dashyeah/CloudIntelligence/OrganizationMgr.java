@@ -14,6 +14,7 @@ import org.apache.commons.io.FileUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import life.dashyeah.CloudIntelligence.Data.FileSavingCfg;
 import life.dashyeah.CloudIntelligence.Data.OrgOpt;
 
 public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt> {
@@ -145,9 +146,10 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 	
 	private boolean saveFile() {
 		/* Copy file to a safe location */
-		String destPath = "D:\\Java\\apache-tomcat-8.5.29\\work";
+		String destPath = FileSavingCfg.getFileRoot();
 		
 		try {
+			/*
 			System.out.println("Src File name: " + opt.getLogo());
 			System.out.println("Src File name: " + opt.getBackground());
 			System.out.println("Src File name: " + opt.getPic());
@@ -159,7 +161,7 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 			System.out.println("myFileContentType: " + opt.getLogoContentType());
 			System.out.println("myFileContentType: " + opt.getBackgroundContentType());
 			System.out.println("myFileContentType: " + opt.getPicContentType());
-
+			*/
 			File destFile = new File(destPath, opt.getLogoFileName());
 			FileUtils.copyFile(opt.getLogo(), destFile);
 			File destFile1 = new File(destPath, opt.getBackgroundFileName());

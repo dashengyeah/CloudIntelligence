@@ -1,2 +1,0 @@
-# CloudIntelligence
-Personal Codes.
