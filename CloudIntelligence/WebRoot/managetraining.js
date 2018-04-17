@@ -2,36 +2,16 @@
  * 
  */
 
-function course(){
-	//alert("course!");
-	$("#item-org").css({"display":"none"});
-	$("#item-training").css({"display":"none"});
-	$("#item-course").css({"display":"block"});
-}
-
-function org(){
-	$("#item-course").css({"display":"none"});
-	$("#item-training").css({"display":"none"});
-	$("#item-org").css({"display":"block"});
-}
-
-function training(){
-	$("#item-org").css({"display":"none"});
-	$("#item-course").css({"display":"none"});
-	$("#item-training").css({"display":"block"});
-}
-
 $(document).ready(function(){
-	bind_course();
-});
+	bind_training();
+})
 
-function bind_course(){
-	$("#btn_course_add").click(function(){
-		alert("新增！");
+function bind_training(){
+	$("#btn_training_add").click(function(){
 		$.ajax({
 			type:"POST",
-			url:"managecourse?opt=add",
-			data:new FormData($("#course_add_info")[0]),
+			url:"managetraining?opt=add",
+			data:new FormData($("#training_add_info")[0]),
             async: false,
             cache: false,
             contentType: false,
@@ -46,12 +26,12 @@ function bind_course(){
 				alert("error: "+xhr.responseText);
 			}
 		})
-	});
-	$("#btn_course_delete").click(function(){
+	})
+	$("#btn_training_delete").click(function(){
 		$.ajax({
 			type:"POST",
-			url:"managecourse?opt=delete",
-			data:new FormData($("#course_delete_info")[0]),
+			url:"managetraining?opt=delete",
+			data:new FormData($("#training_delete_info")[0]),
             async: false,
             cache: false,
             contentType: false,
@@ -67,30 +47,29 @@ function bind_course(){
 			}
 		})
 	});
-	
-	function showCourses(data){
-		$("#courselist tr:gt(0)").remove();
+	function showTrainings(data){
+		$("#traininglist tr:gt(0)").remove();
 		//$("#table1 tr:eq(0):not(:eq(0))").remove();
 		$.each(data,function(n,v) {
 			var newRow = "<tr><td>"+v["id"]+
 			             "</td><td>"+v["name"]+
-			             "</td><td>"+v["school"]+
-			             "</td><td>"+v["teacher"]+
+			             "</td><td>"+v["content"]+
+			             "</td><td>"+v["course"]+
+			             "</td><td>"+v["releasedate"]+
+			             "</td><td>"+v["deadline"]+
 			             "</td></tr>";
-			$("#courselist tr:last").after(newRow);
+			$("#traininglist tr:last").after(newRow);
 		})
-	};
-	$("#btn_course_list").click(function(){
+	}
+	$("#btn_training_list").click(function(){
 		$.ajax({
 			type:"POST",
-			url:"managecourse?opt=list",
+			url:"managetraining?opt=list",
 			data:{},
 			dataType:"json",
 			cache:false,
 			success:function(data){
-				if(data["status"] == "OK"){
-					showCourses(data["courses"]);
-				}
+				if(data["status"] == "OK") showTrainings(data["trainings"]);
 				else{
 					alert("查询失败！");
 				}
