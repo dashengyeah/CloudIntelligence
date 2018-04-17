@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>新增</h3>
+	<form action="manageorganization?opt=add" method="post" enctype="multipart/form-data">
+		name:<label for="name"></label>
+		<input type="text" name="name"/> <br />
+		type:<label for="type"></label>
+		<input type="text" name="type"/> <br />
+		intro:<label for="introduction"></label>
+		<input type="text" name="introduction"/> <br />
+
+    	logo:<label for="logo"></label>
+    	<input type="file" name="logo" /> <br />
+    	bg:<label for="background"></label>
+    	<input type="file" name="background" /> <br />
+    	pic:<label for="pic"></label>
+    	<input type="file" name="pic" /> <br />
+    	
+    	<input type="submit" value="Upload"/>
+   </form>
+</body>
+</html>

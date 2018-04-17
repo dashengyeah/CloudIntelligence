@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="managecourse?opt=add" method="post" enctype="multipart/form-data">
+		<input type="text" name="name" placeholder="课程名称" /> <br />
+		<textarea name="introduction" placeholder="课程简介"></textarea>
+		<br /> <label for="type">课程分类：</label> <select name="type">
+			<option value="null">--未选择--</option>
+			<option value="数学/统计数学">数学/统计数学</option>
+			<option value="数学/数值分析">数学/数值分析</option>
+			<option value="数学/微积分">数学/微积分</option>
+			<option value="数学/组合数学">数学/组合数学</option>
+			<option value="数学/高等数学">数学/高等数学</option>
+		</select> <br /> <label for="post">封面图片：</label> <input type="file"
+			name="post" /> <br /> <label for="video">简介视频：</label> <input
+			type="file" name="video" /> <br /> <input type="submit"
+			id="btn_add" value="新增" /> <br />
+	</form>
+</body>
+</html>
