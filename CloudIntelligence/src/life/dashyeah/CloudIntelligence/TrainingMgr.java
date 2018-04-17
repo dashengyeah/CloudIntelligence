@@ -72,12 +72,12 @@ public class TrainingMgr extends ActionSupport implements ModelDriven<TrainingOp
 				dataMap.put("info", "SQL ERROR");
 				return SUCCESS;
 			}
-			dataMap.put("organizations", trainings);
+			dataMap.put("trainings", trainings);
 			dataMap.put("status", "OK");
 			break;
 		case "add":
 			trainings.clear();
-			sql = "insert into trainings(course, name, content, releasedate, deadline)";
+			sql = "insert into training(course, name, content, releasedate, deadline)";
 			sql += "values("+
 			       opt.getCourse()+", '"+
 				   opt.getName()+"', '"+
@@ -97,7 +97,7 @@ public class TrainingMgr extends ActionSupport implements ModelDriven<TrainingOp
 				dataMap.put("info", "SQL ERROR");
 				return SUCCESS;
 			}
-			dataMap.put("organizations", trainings);
+			dataMap.put("trainings", trainings);
 			dataMap.put("status", "OK");
 			break;
 		case "delete":
@@ -116,7 +116,7 @@ public class TrainingMgr extends ActionSupport implements ModelDriven<TrainingOp
 				dataMap.put("info", "SQL ERROR");
 				return SUCCESS;
 			}
-			dataMap.put("organizations", trainings);
+			dataMap.put("trainings", trainings);
 			dataMap.put("status", "OK");
 			break;
 		default:
