@@ -7,21 +7,27 @@
 	<script src="./js/lib/jquery-2.0.3.min.js"></script> 
 	<script src="./js/login.js"></script>
 </head>
-<body>
-	<div id="title_box" style="text-align:center;">
-		<h1>欢迎使用云智教育平台</h1>
-	</div>
+<body >
+<div style="background-image:url('./img/managerLogin.jpg');width:100%;height:600px;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative;">
+	<div style="width:60%;margin-left:20%;margin-right:20%;height:320px;position:absolute;background-color:rgba(255,255,255,0.4);top:80px;">
+		<div id="title_box" style="text-align:center;">
+			<h1>欢迎使用云智教育平台</h1>
+		</div>
 	
-	<div id="login_box" align="center">
-		<form id="loginform">
-		<table style="text-align:center" border="1">
-			<caption>管理员登录</caption>
-			<tr><td>用户名:</td><td><input type="text" name="username" id="username"/></td> </tr>
-			<tr><td>密码:</td><td><input type="password" name="password" id="password"/></td> </tr>
-			<tr><td colspan="2"><input type="button" value="登录" id="btn"/></td></tr>
-		</table>
-		</form>
-	</div>
-	
+		<div id="login_box" align="center">
+			<form id="loginform" style="margin-left:26%;width:74%;">
+				<div style="width:100%;height:50px;">
+				<div style="width:15%;float:left;">用户名:</div>
+				<div style="float:left;"><input type="text" name="username" id="username" style="width:230px;height:25px;border-radius:3px;border-style:none;"/></div>
+				</div>
+				<div style="width:100%;height:50px;">
+				<div style="width:15%;float:left;">密码:</div>
+				<div style="float:left;"><input type="password" name="password" id="password" style="width:230px;height:25px;border-radius:3px;border-style:none;"/></div>
+				</div>
+				<div><input type="button" value="登录" id="btn" style="width:230px;height:25px;border-radius:3px;border-style:none;float:left;margin-left:15%;"/></div>
+			</form>
+		</div>
+   </div>
+</div>
 </body>
 </html>

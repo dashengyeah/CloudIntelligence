@@ -14,7 +14,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 
 import life.dashyeah.CloudIntelligence.Data.CourseOpt;
-import life.dashyeah.CloudIntelligence.Data.FileSavingCfg;
+import life.dashyeah.CloudIntelligence.Data.CfgReader;
 
 public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 
@@ -145,7 +145,7 @@ public class CourseMgr extends ActionSupport implements ModelDriven<CourseOpt>{
 	}
 
 	private boolean saveFile() {
-		String destPath = FileSavingCfg.getFileRoot();
+		String destPath = CfgReader.getFileRoot();
 		try {
 			/*
 			System.out.println("Src File name: " + opt.getPost());

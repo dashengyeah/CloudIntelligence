@@ -9,27 +9,30 @@
 			border:1px solid black;
 		}
 		#top{
+		border:none;
 			float:top;
 			height:80px;
 		}
 		#left{
 			float:left;
-			width:20%;
+			width:14%;
+			background-color:forestgreen;
+			height:584px;
 		}
 		#right{
 			float:right;
-			width:79%;
+			width:85%;
+			background-color:window;
 		}
 		.menu-item:hover{
 			cursor:pointer;
-			color:blue;
+			color:green;
 		}
 		.item-content{
 			display:none;
-			text-align:center;
 		}
 		#course-panel{
-			text-align:center;
+			
 		}
 	</style>
 	<script src="./js/lib/jquery-2.0.3.js"></script>
@@ -41,35 +44,87 @@
 </head>
 <body>
 
-	<div class="all" id="top" style="text-align:center">
-		<h3>云智教育平台</h3>
+	<div class="all" id="top" >
+	<img src="./img/151946214719325.png" style="width:27%;float:left;margin-top:10px;">	<div style="margin-top:15px;margin-left:19%;width:20%;float:left;color:green;"><span style="font-size:28px;"><strong>云智教育平台</strong></span></div>
+	<div style="float:right;margin-right:1%;width:20%;height:auto;margin-top:7px;">
+	<img src="./img/manager.gif" style="width:27%;float:left;"><div style="float:left;font-szie:20px;margin-top:17px;color:grey;">这货不是管理员</div>
+	</div>
 	</div>
 
-	<div class="all" id="left">
-		<h4>目录</h4>
-		<ul id="menu">
-			<li class="menu-item" onclick="course()">课程</li>
-			<li class="menu-item" onclick="org()">组织/机构</li>
-			<li class="menu-item" onclick="training()">实训计划</li>
-		</ul>
+	<div class="all" id="left" >
+		<h4 style="text-align:center;">目录</h4>
+		<div id="menu">
+			<div class="menu-item" onclick="course()" style="background-color:aliceblue;border-radius:2px;border-style:none;width:100%;">课程</div>
+			<div class="menu-item" onclick="org()" style="background-color:aliceblue;border-radius:2px;border-style:none;margin-top:5px;">组织/机构</div>
+			<div class="menu-item" onclick="training()" style="background-color:aliceblue;border-radius:2px;border-style:none;margin-top:5px;">实训计划</div>
+		</div>
 	</div>
 
 	<div class="all" id="right" >
+	<img src="./img/pen.jpg" style="height:180px;position:fixed;top:280px;right:10px;">
 		<div id="item-course" class="item-content" style="display:block">
-			<h3>课程管理</h3>
+		<div style="width:100%;height:60px;"><img src="./img/courselogo.jpg" style="width:3%;float:left;margin-left:40%;margin-top:6px;">	<div style="float:left;margin-top:6px;margin-left:1%;"><span style="font-size:23px;color:black;">课程管理</span></div></div>
 			<div id="course-panel">
 				<form id="course_add_info" action="managecourse?opt=add" method="post" enctype="multipart/form-data">
-					<input type="text" name="name" placeholder="课程名称"/> <br />
-					<textarea name="introduction" placeholder="课程简介"></textarea> <br />
+					<div >请输入课程名称：<input type="text" name="name" placeholder="课程名称"/> </div>
+					<textarea name="introduction" placeholder="课程简介" rows="3" cols="34"></textarea> <br />
 					
 					<label for="type">课程分类：</label>
 					<select name="type">
 						<option value="null">--未选择--</option>
-						<option value="数学/统计数学">数学/统计数学</option>
-						<option value="数学/数值分析">数学/数值分析</option>
-						<option value="数学/微积分">数学/微积分</option>
-						<option value="数学/组合数学">数学/组合数学</option>
-						<option value="数学/高等数学">数学/高等数学</option>
+						<option value="理科|数学|统计数学">理科|数学|统计数学</option>
+						<option value="理科|数学|数值分析">理科|数学|数值分析</option>
+						<option value="理科|数学|微积分">理科|数学|微积分</option>
+						<option value="理科|数学|组合数学">理科|数学|组合数学</option>
+						<option value="理科|数学|高等数学">理科|数学|高等数学</option>
+						<option value="理科|地理|天文">理科|地理|天文</option>
+						<option value="理科|地理|水土">理科|地理|水土</option>
+						<option value="理科|地理|海洋">理科|地理|海洋</option>
+						<option value="理科|地理|沙漠">理科|地理|沙漠</option>
+						<option value="理科|物理|经典物理基础">理科|物理|经典物理基础</option>
+						<option value="理科|物理|微观物理学">理科|物理|微观物理学</option>
+						<option value="理科|物理|宇宙物理学">理科|物理|宇宙物理学</option>
+						
+						
+						<option value="工科|计算机|操作系统">工科|计算机|操作系统</option>
+						<option value="工科|计算机|组成原理">工科|计算机|组成原理</option>
+						<option value="工科|计算机|算法结构">工科|计算机|算法结构</option>
+						<option value="工科|计算机|编程语言">工科|计算机|编程语言</option>
+						<option value="工科|计算机|linux">工科|计算机|linux</option>
+						<option value="工科|计算机|汇编">工科|计算机|汇编</option>
+						<option value="工科|计算机|web后端开发">工科|计算机|web后端开发</option>
+						<option value="工科|计算机|web前端开发">工科|计算机|web前端开发</option>
+						<option value="工科|计算机|单片机">工科|计算机|单片机</option>
+						<option value="工科|计算机|移动端ios">工科|计算机|移动端ios</option>
+						<option value="工科|计算机|移动端android">工科|计算机|移动端android</option>
+						<option value="工科|计算机|大数据">工科|计算机|大数据</option>
+						<option value="工科|计算机|云计算">工科|计算机|云计算</option>
+						<option value="工科|计算机|人工智能">工科|计算机|人工智能</option>
+						<option value="工科|电子|嵌入式">工科|电子|嵌入式</option>
+						<option value="工科|电子|电子概论">工科|电子|电子概论</option>
+						<option value="工科|电子|电子工程实践">工科|电子|电子工程实践</option>
+						<option value="工科|通信|遥感">工科|通信|遥感</option>
+						<option value="工科|电子|通信工程">工科|电子|通信工程</option>
+						
+						
+						<option value="文科|政治|治国方针">文科|政治|治国方针</option>
+						<option value="文科|政治|社会热点">文科|政治|社会热点</option>
+						<option value="文科|政治|国际形势">文科|政治|国际形势</option>
+						<option value="文科|政治|马原理论">文科|政治|马原理论</option>
+						<option value="文科|法律|刑法">文科|法律|刑法</option>
+						<option value="文科|法律|民事">文科|法律|民事</option>
+						<option value="文科|法律|侦探破案">文科|法律|侦探破案</option>
+						<option value="文科|文学赏析|国学经典">文科|文学赏析|国学经典</option>
+						<option value="文科|文学赏析|国外名著">文科|文学赏析|国外名著</option>
+						<option value="文科|语言教程|英语">文科|语言教程|英语</option>
+						<option value="文科|语言教程|中文">文科|语言教程|中文</option>
+						<option value="文科|语言教程|法语">文科|语言教程|法语</option>
+						<option value="文科|语言教程|日语">文科|语言教程|日语</option>
+						<option value="文科|心理学|犯罪心理学">文科|心理学|犯罪心理学</option>
+						<option value="文科|心理学|感情社交心理学">文科|心理学|感情社交心理学</option>
+						<option value="文科|心理学|情绪人格调养心理学">文科|心理学|情绪人格调养心理学</option>
+						<option value="文科|心理学|家庭教育心理学">文科|心理学|家庭教育心理学</option>
+						<option value="文科|心理学|管理心理学">文科|心理学|管理心理学</option>
 					</select> <br />
 			    	<label for="post">封面图片：</label>
 			    	<input type="file" name="post" /> <br />
@@ -92,7 +147,7 @@
 			</div>
 		</div>
 		<div id="item-org" class="item-content">
-			<h3>院校/机构管理</h3>
+			<h3 style="text-align:center;">院校/机构管理</h3>
 			<form id="org_add_info" action="manageorganization?opt=add" method="post" enctype="multipart/form-data">
 				<label for="name"></label>
 				<input type="text" name="name" placeholder="机构/组织名称"/> <br />
@@ -126,6 +181,7 @@
 			</div>
 		</div>
 		<div id="item-training" class="item-content">
+		<h3 style="text-align:center;">综合实训</h3>
 			<form id="training_add_info" action="managetraining?opt=add" method="post">
 				<input type="text" name="name" placeholder="实训名称"/>
 				<input type="text" name="course" placeholder="课程id"/> <br />

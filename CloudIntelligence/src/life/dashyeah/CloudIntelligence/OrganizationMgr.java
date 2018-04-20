@@ -14,7 +14,7 @@ import org.apache.commons.io.FileUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import life.dashyeah.CloudIntelligence.Data.FileSavingCfg;
+import life.dashyeah.CloudIntelligence.Data.CfgReader;
 import life.dashyeah.CloudIntelligence.Data.OrgOpt;
 
 public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt> {
@@ -146,7 +146,7 @@ public class OrganizationMgr extends ActionSupport implements ModelDriven<OrgOpt
 	
 	private boolean saveFile() {
 		/* Copy file to a safe location */
-		String destPath = FileSavingCfg.getFileRoot();
+		String destPath = CfgReader.getFileRoot();
 		
 		try {
 			/*
